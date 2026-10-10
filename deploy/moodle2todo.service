@@ -1,0 +1,17 @@
+[Unit]
+Description=moodle2todo: Moodle calendar to CalDAV tasks
+# If your CalDAV server runs on this machine as a user unit, add it here, e.g.
+# After=network-online.target my-caldav.service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/moodle2todo.env
+ExecStart=%h/.local/bin/moodle2todo
+Restart=on-failure
+RestartSec=30
+MemoryMax=64M
+
+[Install]
+WantedBy=default.target
